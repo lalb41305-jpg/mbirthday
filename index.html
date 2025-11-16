@@ -15,8 +15,6 @@
       --radius:18px;
       --maxw:1200px;
       --hero-bg:#ffe6f1;
-
-      /* section height used to match hero-photo and wishes card */
       --section-height:420px;
     }
 
@@ -28,118 +26,53 @@
       padding:28px 18px;
       display:flex;
       justify-content:center;
+      overflow-x:hidden;
     }
     .wrap{ width:100%; max-width:var(--maxw); position:relative; }
 
     .hero-title {
-  font-family: "Poppins", sans-serif;
-  font-size: 44px;
-  font-weight: 900;
-  color: #ff77b7;
-  text-shadow: 0px 3px 10px rgba(255, 150, 200, 0.25);
-  letter-spacing: 1px;
-  animation: bounce 1.5s ease infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
+      font-family: "Poppins", sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      color: #ff77b7;
+      text-shadow: 0px 3px 10px rgba(255, 150, 200, 0.25);
+      letter-spacing: 1px;
+      animation: bounce 1.5s ease infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
     /* Music control (top-right) */
-    .music-control{
-      position:fixed;
-      right:18px;
-      top:18px;
-      z-index:20000;
-      display:flex;
-      gap:8px;
-      align-items:center;
-      background:rgba(255,255,255,0.9);
-      padding:8px 10px;
-      border-radius:999px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.06);
-      backdrop-filter: blur(4px);
-    }
-    .music-btn{
-      background:var(--accent);
-      color:white;
-      border:0;
-      padding:8px 12px;
-      border-radius:999px;
-      cursor:pointer;
-      font-weight:700;
-    }
+    .music-control{ position:fixed; right:18px; top:18px; z-index:20000; display:flex; gap:8px; align-items:center; background:rgba(255,255,255,0.9); padding:8px 10px; border-radius:999px; box-shadow:0 8px 20px rgba(0,0,0,0.06); }
+    .music-btn{ background:var(--accent); color:white; border:0; padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700; }
     .music-status{ font-size:13px; color:var(--muted); }
 
     /* ---------- HERO ---------- */
-    .hero-large{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:20px;
-      margin-bottom:22px;
-    }
-    @media(min-width:980px){
-      .hero-large{ grid-template-columns:1fr 1.2fr; }
-    }
+    .hero-large{ display:grid; grid-template-columns:1fr; gap:20px; margin-bottom:22px; }
+    @media(min-width:980px){ .hero-large{ grid-template-columns:1fr 1.2fr; } }
 
-    .hero-card{
-      background:var(--hero-bg);
-      border-radius:24px;
-      padding:34px;
-      box-shadow:0 12px 40px rgba(0,0,0,0.06);
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      min-height:var(--section-height);
-    }
-    .hero-photo-wrap{
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow:0 12px 40px rgba(0,0,0,0.09);
-      min-height:var(--section-height);
-    }
-    .hero-photo{ width:100%; height:100%; object-fit:cover; display:block; }
+    .hero-card{ background:var(--hero-bg); border-radius:24px; padding:34px; box-shadow:0 12px 40px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:center; min-height:var(--section-height); }
+    .hero-photo-wrap{ border-radius:24px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.09); min-height:var(--section-height); position:relative; }
+    .hero-photo{ width:100%; height:100%; object-fit:cover; display:block; cursor:pointer; }
 
-    .hero-title{ margin:0; font-size:42px; font-weight:800; color:#ff4d82; }
     .hero-sub{ margin:14px 0 0; font-size:16px; color:#555; line-height:1.5; white-space:pre-line; }
     .hero-meta{ margin-top:20px; display:flex; align-items:center; gap:14px; }
     .pill{ background:white; padding:10px 16px; border-radius:999px; font-weight:700; box-shadow:0 8px 18px rgba(255,90,140,0.15); }
     .celebrate-btn{ background:#ff4d82; color:white; border:none; padding:10px 20px; border-radius:999px; cursor:pointer; font-weight:700; }
 
     /* GALLERY (2x2 on desktop, 1 column on mobile) */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-      margin-top:12px;
-    }
-    @media(min-width:700px){
-      .gallery-grid{ grid-template-columns:1fr 1fr; }
-    }
+    .gallery-grid{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:12px; }
+    @media(min-width:700px){ .gallery-grid{ grid-template-columns:1fr 1fr; } }
 
-    /* portrait-focused: taller so portrait images are fully visible */
-    .photo{
-      width:100%;
-      height:420px; /* portrait, larger */
-      object-fit:cover;
-      border-radius:16px;
-      cursor:pointer;
-      transition:transform .22s, box-shadow .22s;
-      display:block;
-    }
-    @media(max-width:700px){
-      .photo{ height:320px; } /* mobile slightly smaller */
-    }
+    .photo{ width:100%; height:420px; object-fit:cover; border-radius:16px; cursor:pointer; transition:transform .22s, box-shadow .22s; display:block; }
+    @media(max-width:700px){ .photo{ height:320px; } }
     .photo:hover{ transform:scale(1.02); box-shadow:0 12px 30px rgba(0,0,0,0.14); }
 
-    /* CARD (wishes card also uses section height to match hero) */
+    /* CARD */
     .card{ background:white; padding:20px; border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,0.06); margin-top:18px; }
     .wishes-card{ min-height:var(--section-height); }
 
-    /* MODAL (image + controls) */
-    .modal-wrap{ position:fixed; inset:0; background:rgba(0,0,0,0.65); display:flex; justify-content:center; align-items:center; padding:24px; z-index:9999; }
+    /* MODAL */
+    .modal-wrap{ position:fixed; inset:0; background:rgba(0,0,0,0.72); display:flex; justify-content:center; align-items:center; padding:24px; z-index:9999; }
     .modal-content{ max-width:1100px; width:100%; display:flex; gap:18px; align-items:flex-start; }
     .modal-img{ width:60%; max-height:80vh; object-fit:contain; border-radius:12px; background:#000; }
     .modal-controls{ width:40%; display:flex; flex-direction:column; gap:10px; color:white; }
@@ -159,6 +92,28 @@
 
     .hint{ font-size:13px; color:var(--muted) }
 
+    /* CELEBRATION: rose sparkles + pink petals (updated: slower & more distributed) */
+    .celebration-layer{ pointer-events:none; position:fixed; inset:0; z-index:15000; overflow:hidden; }
+    .rose-emoji, .petal {
+      position:absolute;
+      font-size:22px;
+      will-change:transform,opacity;
+      user-select:none;
+      pointer-events:none;
+    }
+    .petal{ font-size:18px; opacity:0.95; }
+
+    /* slower, longer rise for roses */
+    @keyframes riseFade {
+      0% { transform: translateY(0) scale(1) rotate(0deg); opacity:1; }
+      40% { opacity:1; transform: translateY(-80px) scale(1.05) rotate(20deg); }
+      100% { transform: translateY(-360px) scale(0.85) rotate(420deg); opacity:0; }
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1) rotate(0deg); opacity:1; }
+      100% { transform: translateY(-300px) scale(0.8) rotate(360deg); opacity:0; }
+    }
+
     /* small responsive tweaks */
     @media(max-width:520px){
       .modal-content{ flex-direction:column; }
@@ -174,6 +129,9 @@
     <div class="music-status" id="musicStatus">Music: Paused</div>
     <button id="musicToggle" class="music-btn" aria-pressed="false">Play</button>
   </div>
+
+  <!-- celebration DOM layer -->
+  <div id="celebrationLayer" class="celebration-layer" aria-hidden="true"></div>
 
   <div class="wrap">
 
@@ -197,7 +155,6 @@ and once again, "Happy Birthday! May your dreams come true," "Wishing you a day 
 
 
 jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur dena ki kesa laga 
-
         </p>
 
         <div class="hero-meta">
@@ -207,8 +164,8 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
       </div>
 
       <div class="hero-photo-wrap">
-        <!-- replace with your hero image -->
-        <img src="misha 0.jpeg" class="hero-photo" alt="Misha hero image">
+        <!-- hero is clickable -->
+        <img src="misha 0.jpeg" class="hero-photo" id="heroPhoto" alt="Misha hero image" data-audio="Tum Se Hi - (Raag.Fm).mp3" data-title="Tum Se Hi">
       </div>
     </section>
 
@@ -247,7 +204,7 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
       </form>
 
       <div id="wishesList" style="margin-top:14px; max-height:250px; overflow:auto"></div>
-      <div class="hint" style="margin-top:8px">Tip: Click a photo to view it and play its song. Click Celebrate or press Play to start page music.</div>
+      <div class="hint" style="margin-top:8px">Tip: Click any photo to view it and listen to its song — enjoy the celebration! </div>
     </section>
 
     <footer>
@@ -267,7 +224,6 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
       { date: '2025-04-16', title: 'First Meet', text: 'Celebration of Dumb Charade', photo: 'first meet.jpeg' },
       { date: '2025-10-21', title: 'diwali meetup', text: 'The best laughter and chaos 😄', photo: 'meet 2.jpeg' }
     ];
-
     const timeline = document.getElementById('timeline');
     TIMELINE_DATA.forEach(m=>{
       const el = document.createElement('div');
@@ -283,10 +239,94 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
       timeline.appendChild(el);
     });
 
+    /* ====== Celebration helpers (rose sparkles + pink petals) ====== */
+
+    // Distribute N points in a rows x cols grid inside rect, with small jitter
+    function distributedPositions(count, rect){
+      const cols = Math.ceil(Math.sqrt(count));
+      const rows = Math.ceil(count / cols);
+      const positions = [];
+      const cellW = rect.width / cols;
+      const cellH = rect.height / rows;
+      let idx = 0;
+      for(let r=0;r<rows;r++){
+        for(let c=0;c<cols;c++){
+          if(idx>=count) break;
+          // center of cell + small jitter
+          const cx = rect.left + c*cellW + cellW/2 + (Math.random()*cellW*0.28 - cellW*0.14);
+          const cy = rect.top + r*cellH + cellH/2 + (Math.random()*cellH*0.28 - cellH*0.14);
+          positions.push({x: Math.round(cx), y: Math.round(cy)});
+          idx++;
+        }
+      }
+      return positions;
+    }
+
+    function triggerCelebrationAtRect(rect, opts = {}){
+      // default more roses and slower
+      const roseCount = opts.roseCount || 28; // increased count
+      const petalCount = opts.petalCount || 28;
+      const layer = document.getElementById('celebrationLayer');
+
+      // compute distributed positions across rect
+      const rosePositions = distributedPositions(roseCount, rect);
+      rosePositions.forEach((pos, i) => {
+        const span = document.createElement('div');
+        span.className = 'rose-emoji';
+        span.textContent = '🌹';
+        const size = 18 + Math.floor(Math.random()*24);
+        span.style.fontSize = size + 'px';
+        // staggered delays for natural flow
+        const delay = Math.floor(Math.random()*450) + (i * 12);
+        const dur = 2200 + Math.floor(Math.random()*1200); // slower durations
+        span.style.left = (pos.x + (Math.random()*40-20)) + 'px';
+        span.style.top = (pos.y + (Math.random()*30-15)) + 'px';
+        span.style.animation = `riseFade ${dur}ms cubic-bezier(.2,.8,.2,1) ${delay}ms forwards`;
+        layer.appendChild(span);
+        setTimeout(()=> span.remove(), dur + delay + 80);
+      });
+
+      // petals: spread around rect, slightly below and drift up
+      for(let i=0;i<petalCount;i++){
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.textContent = '❀';
+        const px = rect.left + Math.random()*rect.width;
+        const py = rect.top + rect.height*0.6 + Math.random()*rect.height*0.4;
+        p.style.left = px + 'px';
+        p.style.top = py + 'px';
+        const size = 14 + Math.floor(Math.random()*18);
+        p.style.fontSize = size + 'px';
+        const dur = 1800 + Math.floor(Math.random()*1600);
+        const delay = Math.floor(Math.random()*500);
+        p.style.animation = `floatUp ${dur}ms cubic-bezier(.2,.8,.2,1) ${delay}ms forwards`;
+        layer.appendChild(p);
+        setTimeout(()=> p.remove(), dur + delay + 80);
+      }
+    }
+
+    // convenience: accepts x,y center and a fallback rect around center
+    function triggerCelebration(x,y,opts){
+      // if x,y missing use center of viewport
+      if(typeof x !== 'number' || typeof y !== 'number'){
+        const w = window.innerWidth, h = window.innerHeight;
+        x = Math.round(w/2); y = Math.round(h*0.6);
+      }
+      // create a rect centered at x,y with width proportional to screen (so roses cover photo area)
+      const rectW = Math.min(420, Math.round(window.innerWidth * 0.7));
+      const rectH = Math.min(420, Math.round(window.innerHeight * 0.5));
+      const rect = {
+        left: x - rectW/2,
+        top: y - rectH/2,
+        width: rectW,
+        height: rectH
+      };
+      triggerCelebrationAtRect(rect, opts);
+    }
+
     /* ====== Timeline photo modal (opens timeline image full-screen) ====== */
     (function(){
       const timelineEl = document.getElementById('timeline');
-
       timelineEl.addEventListener('click', function(e){
         const img = e.target.closest('img');
         if(!img) return;
@@ -297,7 +337,12 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
         if(bg){
           bg._wasPlaying = !bg.paused;
           if(!bg.paused) bg.pause();
+          try{ setMusicState(false); } catch(e){}
         }
+
+        // trigger celebration across the clicked image area (more roses, slow)
+        const rect = img.getBoundingClientRect();
+        triggerCelebrationAtRect(rect, { roseCount: 28, petalCount: 28 });
 
         const wrap = document.createElement('div');
         wrap.className = 'modal-wrap';
@@ -311,21 +356,105 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
 
         // close handlers
         document.getElementById('closeTimelineModal').addEventListener('click', closeModal);
-        wrap.addEventListener('click', function(ev){
-          if(ev.target === wrap) closeModal();
-        });
+        wrap.addEventListener('click', function(ev){ if(ev.target === wrap) closeModal(); });
 
         function closeModal(){
           wrap.remove();
           // resume background music if it was playing
           if(bg && bg._wasPlaying){
             bg.play().catch(()=>{});
+            try{ setMusicState(true); }catch(e){}
           }
         }
       });
     })();
 
-    /* ====== Gallery modal + per-photo audio playback (modal auto-play attempted) ====== */
+    /* ====== Hero photo modal + audio (click hero to play its song) ====== */
+    (function(){
+      const heroPhoto = document.getElementById('heroPhoto');
+      if(!heroPhoto) return;
+
+      function openHeroModal(e){
+        const src = heroPhoto.getAttribute('src');
+        const title = heroPhoto.dataset.title || 'Hero Song';
+        const audioSrc = heroPhoto.dataset.audio || null;
+
+        // pause bg music (remember)
+        const bg = document.getElementById('bgMusic');
+        if(bg){
+          bg._wasPlaying = !bg.paused;
+          if(!bg.paused) bg.pause();
+          try { setMusicState(false); } catch(e) {}
+        }
+
+        // celebration across hero image area (more roses, slower)
+        const rect = heroPhoto.getBoundingClientRect();
+        triggerCelebrationAtRect(rect, { roseCount: 34, petalCount: 30 });
+
+        // create modal
+        const wrap = document.createElement('div');
+        wrap.className = 'modal-wrap';
+        wrap.innerHTML = `
+          <div class="modal-content" role="dialog" aria-label="Hero modal" style="max-width:1000px;flex-direction:column;align-items:center;">
+            <img src="${src}" class="modal-img" style="width:90%;max-height:80vh;object-fit:contain;border-radius:12px;">
+            <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+              <button id="heroModalPlay" style="padding:10px 14px;border-radius:8px;border:none;background:#ff7aa6;color:#fff;font-weight:700">Play</button>
+              <button id="heroModalPause" style="padding:10px 14px;border-radius:8px;border:none;background:#fff;color:#ff4d82;font-weight:700">Pause</button>
+              <button id="heroModalClose" class="close-btn" style="padding:10px 14px;border-radius:8px;border:0">Close</button>
+            </div>
+            <div id="heroModalStatus" style="margin-top:8px;color:rgba(255,255,255,0.9)"></div>
+          </div>
+        `;
+        document.body.appendChild(wrap);
+
+        let modalAudio = null;
+        const statusDiv = wrap.querySelector('#heroModalStatus');
+        function updateStatus(t){ if(statusDiv) statusDiv.textContent = t; }
+
+        if(audioSrc){
+          modalAudio = new Audio(audioSrc);
+          modalAudio.preload = 'auto';
+          modalAudio.volume = 0.85;
+
+          // controls
+          wrap.querySelector('#heroModalPlay').addEventListener('click', ()=> {
+            modalAudio.play().then(()=> updateStatus('Playing')).catch(()=> updateStatus('Playback blocked — press Play again.'));
+          });
+          wrap.querySelector('#heroModalPause').addEventListener('click', ()=> {
+            modalAudio.pause(); updateStatus('Paused');
+          });
+          wrap.querySelector('#heroModalClose').addEventListener('click', closeModal);
+
+          // when song ends
+          modalAudio.addEventListener('ended', ()=> {
+            updateStatus('Finished');
+            closeModal();
+          });
+
+          // try autoplay (user clicked hero so it's treated as gesture)
+          modalAudio.play().then(()=> updateStatus('Playing')).catch(()=> updateStatus('Tap Play to listen.'));
+        } else {
+          wrap.querySelector('#heroModalPlay').disabled = true;
+          wrap.querySelector('#heroModalPause').disabled = true;
+          updateStatus('No song assigned for hero photo.');
+        }
+
+        // close on outside click
+        wrap.addEventListener('click', (ev)=> { if(ev.target === wrap) closeModal(); });
+
+        function closeModal(){
+          try{ if(modalAudio){ modalAudio.pause(); modalAudio.src = ''; } } catch(e){}
+          wrap.remove();
+          // resume bg music if it was playing before
+          if(bg && bg._wasPlaying){ bg.play().then(()=> setMusicState(true)).catch(()=>{}); }
+        }
+      }
+
+      // clicking the hero image opens modal and triggers celebration
+      heroPhoto.addEventListener('click', openHeroModal);
+    })();
+
+    /* ====== Gallery modal + per-photo audio playback + celebration ====== */
     (function(){
       const gallery = document.getElementById('gallery');
       let modalAudio = null;
@@ -359,6 +488,10 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
           if(!bg.paused) bg.pause();
           setMusicState(false);
         }
+
+        // celebration at click point (distributed and slow)
+        const rect = img.getBoundingClientRect();
+        triggerCelebrationAtRect(rect, { roseCount: 28, petalCount: 26 });
 
         // create modal element
         modalWrap = document.createElement('div');
@@ -404,7 +537,7 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
             resumeBgIfNeeded();
           });
 
-          // try autoplay once (user already clicked a photo — considered user gesture)
+          // try autoplay once (user clicked a photo — considered user gesture)
           modalAudio.play().then(()=> { modalWrap.querySelector('#modalStatus').textContent = 'Playing'; }).catch(()=> {
             modalWrap.querySelector('#modalStatus').textContent = 'Tap Play to listen.';
           });
@@ -454,7 +587,7 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
     };
     document.getElementById('clearWishes').onclick = ()=>{ if(confirm('Clear all wishes?')){ wishes=[]; localStorage.removeItem('misha_wishes'); renderWishes(); } };
 
-    /* ====== Confetti (pink + white) ====== */
+    /* ====== Confetti (pink + white) — original burst (kept in case Celebrate used) ====== */
     (function(){
       const canvas = document.createElement('canvas');
       canvas.style.position='fixed'; canvas.style.inset=0; canvas.style.pointerEvents='none'; canvas.style.zIndex=9999;
@@ -488,6 +621,15 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
         burst();
         tryPlayMusic(); // attempt to start background music too
       });
+
+      // expose a small burst function for quick celebration (not global but reachable)
+      window._smallBurst = function(){
+        // spawn fewer particles for photo click celebration
+        parts=[];
+        for(let i=0;i<60;i++) parts.push(new Conf());
+        loop();
+        setTimeout(()=>parts=[],2200);
+      }
     })();
 
     /* ====== Background Music Controls ====== */
@@ -518,10 +660,9 @@ jaruri suchna :- ha or jo niche web dev ka kamal dikhaya h uska review jarur den
       if(!audio) return;
       if(audio.paused) tryPlayMusic(); else pauseMusic();
     });
-
     document.addEventListener('visibilitychange', ()=>{ if(document.hidden) audio.pause(); });
 
-    /* Helper: escape */
+    /* ====== Helper: escape */
     function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[c]); }
   </script>
 
